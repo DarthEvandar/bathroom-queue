@@ -28,6 +28,10 @@ app.get('/queue', (req, res) => {
     });
 });
 
+app.get('/', (req, res) => {
+    res.send('API Working');
+});
+
 app.listen(8081, () => {
     console.log('Listening on 8081');
     setTimeout(() => queue.cleanUp(), 5000);
