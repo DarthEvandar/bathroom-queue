@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build && del /s /q docs && xcopy build docs /s /e /q && copy docs\\index.html docs\\404.html"
+    "deploy": "react-scripts build && del /s /q ..\\docs && xcopy build ..\\docs /s /e /q && copy ..\\docs\\index.html ..\\docs\\404.html"
   },
   "eslintConfig": {
     "extends": "react-app"
