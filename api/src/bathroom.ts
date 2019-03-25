@@ -29,7 +29,7 @@ app.get('/queue', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('API Working');
+    res.send('Bathroom API Working');
 });
 
 app.listen(8081, () => {
