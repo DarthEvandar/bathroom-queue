@@ -10,10 +10,16 @@ const queue = new Queue();
 
 app.post('/add/:name', (req, res) => {
     queue.add(new Person(req.params.name));
+    res.send({
+        success: true
+    });
 });
 
 app.delete('/delete', (req, res) => {
     queue.remove();
+    res.send({
+        success: true
+    });
 });
 
 app.get('/queue', (req, res) => {

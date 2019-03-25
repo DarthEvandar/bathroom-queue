@@ -22,8 +22,12 @@ export class Queue {
     }
 
     public cleanUp = () => {
+        const size = this.queue.length;
         this.queue = this.queue.filter((person: Person) => {
             return new Date().getTime() - person.createdAt < 20 * 60000;
         });
+        if (size - this.queue.length !== 0) {
+            console.log(`removed ${size - this.queue.length} items`);
+        }
     }
 }

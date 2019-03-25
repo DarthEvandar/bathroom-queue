@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+rm -r build && git pull && tsc && pm2 restart bathroom

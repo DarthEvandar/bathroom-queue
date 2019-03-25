@@ -8,7 +8,7 @@
     "mockdate": "^2.0.2"
   },
   "scripts": {
-    "start": "tsc && node build/api.js",
+    "start": "tsc && node build/bathroom.js",
     "test": "jest"
   },
   "devDependencies": {

@@ -109,7 +109,7 @@ class App extends Component<any, any> {
               variant="contained"
               color="primary"
               onClick={() => {
-                axios.post(`http://138.68.48.39/add/${value}`, {
+                axios.post(`https://gatekeeper.sundheim.online/bathroom/add/${value}`, {
                   
                 }).then((response) => {
                   this.setState({
