@@ -29,5 +29,6 @@ export class Queue {
         if (size - this.queue.length !== 0) {
             console.log(`removed ${size - this.queue.length} items`);
         }
+        setTimeout(() => this.cleanUp(), 5000);
     }
 }

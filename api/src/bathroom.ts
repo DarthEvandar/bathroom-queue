@@ -34,5 +34,5 @@ app.get('/', (req, res) => {
 
 app.listen(8081, () => {
     console.log('Listening on 8081');
-    setTimeout(() => queue.cleanUp(), 5000);
+    queue.cleanUp();
 });

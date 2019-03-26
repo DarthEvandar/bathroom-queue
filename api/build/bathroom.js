@@ -25,8 +25,14 @@ app.get('/queue', function (req, res) {
         queue: queue.getQueue()
     });
 });
+app.get('/', function (req, res) {
+    res.send('Bathroom API Working');
+});
 app.listen(8081, function () {
     console.log('Listening on 8081');
-    setTimeout(function () { return queue.cleanUp(); }, 5000);
+    setTimeout(function () {
+        queue.cleanUp();
+        console.log('cleaned up');
+    }, 5000);
 });
 //# sourceMappingURL=bathroom.js.map

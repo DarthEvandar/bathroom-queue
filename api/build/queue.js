@@ -15,9 +15,13 @@ var Queue = /** @class */ (function () {
             _this.queue = _this.queue.slice(1, _this.queue.length);
         };
         this.cleanUp = function () {
+            var size = _this.queue.length;
             _this.queue = _this.queue.filter(function (person) {
                 return new Date().getTime() - person.createdAt < 20 * 60000;
             });
+            if (size - _this.queue.length !== 0) {
+                console.log("removed " + (size - _this.queue.length) + " items");
+            }
         };
         this.queue = [];
     }
