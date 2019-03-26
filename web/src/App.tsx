@@ -68,8 +68,17 @@ class App extends Component<any, any> {
 
     this.state = {
       value: '',
-      completed: false
+      completed: false,
+      queue: []
     }
+    this.updateQueue();
+  }
+
+  updateQueue = async () => {
+    const response = await axios.get('https://gatekeeper.sundheim.online/bathroom/queue');
+    this.setState({
+      queue: response.data.queue
+    });
   }
 
   onChange = (event: any) => {
@@ -81,7 +90,7 @@ class App extends Component<any, any> {
   render() {
     const { value, suggestions } = this.state;
     const { classes } = this.props;
-
+    
     return (
       <div>
         <main className={classes.main}>
@@ -103,28 +112,36 @@ class App extends Component<any, any> {
               />
             </div>
             <div className={classes.container}>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                axios.post(`https://gatekeeper.sundheim.online/bathroom/add/${value}`, {
-                  
-                }).then((response) => {
-                  this.setState({
-                    completed: true,
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  axios.post(`https://gatekeeper.sundheim.online/bathroom/add/${value}`, {
+                    
+                  }).then((response) => {
+                    this.setState({
+                      completed: true,
+                    });
+                    this.updateQueue();
+                  }).catch((error) => {
+                    this.setState({
+                      completed: true
+                    });
+                    this.updateQueue();
                   });
-                }).catch((error) => {
-                  this.setState({
-                    completed: true
-                  })
-                });
-              }}
-            >
-              Add
-            </Button>
-          </div>
+                  
+                }}
+              >
+                Add
+              </Button>
+            </div>
+            <br />
+            <CssBaseline />
+            {this.state.queue.map((item: string) => {
+              return <Typography component="h3">{item}</Typography>
+            })}
           </Paper>}
           {this.state.completed && <Paper className={classes.paper}>
               <CssBaseline />
@@ -133,7 +150,11 @@ class App extends Component<any, any> {
                   Success!
                 </Typography>
               </div>
-          </Paper>}
+            <CssBaseline />
+            {this.state.queue.map((item: string) => {
+              return <Typography component="h3">{item}</Typography>
+            })}
+          </Paper>}  
         </main>
       </div>
     );
