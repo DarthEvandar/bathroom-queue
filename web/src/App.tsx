@@ -154,7 +154,7 @@ class App extends Component<any, any> {
             {this.state.queue.map((item: string) => {
               return <Typography component="h3">{item}</Typography>
             })}
-          </Paper>}  
+          </Paper>}
         </main>
       </div>
     );
